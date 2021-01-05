@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="content_area">
+            {% if articles %}
+            <table id="articles" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Painting</th>
+                  <th>Information</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for article in articles %}
+                  <tr>
+                    <td>
+                        <img src="{{asset(article.image)}}" class="smallbox" />
+                        </td>
+                    <td>
+                        <p>    Name: {{ article.name }} <br>
+                               Type: {{ article.type }} <br>
+                               Year: {{ article.year }} <br>
+                               Country: {{ article.country }} <br>
+                    </td>
+                    
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <p>No articles to display</p>
+            {% endif %}
+        </div>
+        <footer>
+            <p> All right reserved <p>
+        </footer>   
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="content_area">
+            {% if articles %}
+            <table id="articles" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Article Title</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for article in articles %}
+                  <tr>
+                    <td>{{ article.name }}</td>
+                    <td>
+                      <a href="/manage/new" class="btn btn-dark">Add</a>
+                      <a href="/manage/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+                      <a href="/manage/delete/{{ article.id }}" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <p>No articles to display</p>
+            {% endif %}
+        </div>
+        <footer>
+            <p> All right reserved <p>
+        </footer>   
+        
+    </div>
+{% endblock %}
